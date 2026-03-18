@@ -1,30 +1,42 @@
 # agent-benchmark-suite
 
-**Comprehensive benchmarking suite for AI agent evaluation**
+**Comprehensive benchmarking suite for evaluating AI agent capabilities**
+
+![Build](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-proprietary-red)
 
 ## Install
 ```bash
-pip install -e '.[dev]'
+pip install -e ".[dev]"
 ```
 
 ## Quick Start
 ```python
-from src import __version__
+from src.core import AgentBenchmarkSuite
+ instance = AgentBenchmarkSuite()
+r = instance.process(input="test")
 ```
 
-## Modules
-- **runner**
-- **tool_use**
-- **reasoning**
-- **planning**
-- **coding**
-- **metrics**
-- **reporter**
-- **leaderboard**
-
-## Docker
+## CLI
 ```bash
-docker compose up
+python -m src status
+python -m src run --input "data"
+```
+
+## API
+| Method | Description |
+|--------|-------------|
+| `process()` | Process |
+| `analyze()` | Analyze |
+| `transform()` | Transform |
+| `validate()` | Validate |
+| `export()` | Export |
+| `get_stats()` | Get stats |
+| `get_stats()` | Get stats |
+| `reset()` | Reset |
+
+## Test
+```bash
+pytest tests/ -v
 ```
 
 ## License
