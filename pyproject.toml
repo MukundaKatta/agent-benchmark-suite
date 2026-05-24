@@ -1,13 +1,44 @@
 [build-system]
 requires = ["setuptools>=68.0", "wheel"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent-benchmark-suite"
-version = "0.1.0"
-description = "Comprehensive benchmarking suite for AI agent evaluation"
-requires-python = ">=3.11"
-dependencies = ["pydantic>=2.0", "fastapi>=0.110.0", "uvicorn>=0.27.0", "anthropic>=0.39.0", "openai>=1.0"]
+version = "0.2.0"
+description = "A fixed 20-task benchmark suite for AI agents, with bundled scorers and a JSON scorecard."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Mukunda Katta" }]
+keywords = ["ai", "agent", "benchmark", "evaluation", "llm"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff>=0.3.0"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+agent-benchmark-suite = "agent_benchmark_suite.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/MukundaKatta/agent-benchmark-suite"
+Repository = "https://github.com/MukundaKatta/agent-benchmark-suite"
+Issues = "https://github.com/MukundaKatta/agent-benchmark-suite/issues"
+
+[tool.setuptools.packages.find]
+include = ["agent_benchmark_suite*"]
+exclude = ["tests*", "examples*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
